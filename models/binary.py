@@ -27,7 +27,7 @@ def ResNetBinary(backbone='resnet152', num_hidden=512, pretrained=True):
 
     return model
 
-def DenseNetBinary(backbone='resnet152', num_hidden=512, pretrained=True):
+def DenseNetBinary(backbone='dense121', num_hidden=512, pretrained=True):
     densenet = getattr(models, backbone)(pretrained)
     in_features = densenet.classifier.in_features
 
@@ -46,7 +46,7 @@ def DenseNetBinary(backbone='resnet152', num_hidden=512, pretrained=True):
         nn.Linear(in_features=num_hidden, out_features=2),
     )
     model = nn.Sequential(
-        nn.Sequential(*list(densenet.children())[:-2]),
+        nn.Sequential(*list(densenet.children())[:-1]),
         head
     )
 

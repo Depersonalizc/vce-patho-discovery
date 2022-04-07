@@ -1,1 +1,1 @@
-from .binary import ResNetBinary
+from .binary import ResNetBinary, DenseNetBinary

@@ -78,8 +78,9 @@ class KvasirCapsuleBinaryTest(Dataset):
         self.metadata_dir = metadata_dir
         self.read_metadata()
         self.to_ram = to_ram
+        self.get_labels()
         if self.to_ram:
-            self.get_labels()
+            
             self.get_images()
 
         self.transform = transform

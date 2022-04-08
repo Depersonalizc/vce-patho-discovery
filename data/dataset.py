@@ -7,6 +7,7 @@ from concurrent import futures
 from functools import partial
 from torch.utils.data import DataLoader, Dataset
 from torch.utils.data.sampler import WeightedRandomSampler
+import torch
 
 from utils.utils import pmap
 

@@ -72,7 +72,7 @@ class KvasirCapsuleBinaryTest(Dataset):
     NORMAL_CLS = ['Normal clean mucosa', 'Pylorus', 
                   'Ampulla of Vatar', 'Ileocecal Valve']  # class 0
 
-    def __init__(self, metadata_dir, images_dir, fold, to_ram = True,transform=None):
+    def __init__(self, metadata_dir, images_dir, fold, transform=None, to_ram = True):
 
         self.fold = fold
         self.images_dir = images_dir
@@ -117,7 +117,7 @@ class KvasirCapsuleBinaryTest(Dataset):
             fname = self.metadata.iloc[index, :].filename
             image = cv2.imread(osp.join(self.images_dir, fname))
             image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-            label = int(self.metadata.iloc[index,:]['finding_class'] in self.NORMAL_CLS)
+            label = ~int(self.metadata.iloc[index,:]['finding_class'] in self.NORMAL_CLS)
         if self.transform:
             image = self.transform(image)
         return image, label

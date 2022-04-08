@@ -117,7 +117,7 @@ class KvasirCapsuleBinaryTest(Dataset):
             fname = self.metadata.iloc[index, :].filename
             image = cv2.imread(osp.join(self.images_dir, fname))
             image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-            label = torch.Tensor([self.metadata.iloc[index,:]['finding_class'] in self.NORMAL_CLS])
+            label = int(self.metadata.iloc[index,:]['finding_class'] in self.NORMAL_CLS)
         if self.transform:
             image = self.transform(image)
         return image, label

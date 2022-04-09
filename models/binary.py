@@ -27,7 +27,7 @@ def ResNetBinary(backbone='resnet152', num_hidden=512, pretrained=True):
 
     return model
 
-def DenseNetBinary(backbone='dense121', num_hidden=512, pretrained=True):
+def DenseNetBinary(backbone='densenet121', num_hidden=512, pretrained=True):
     densenet = getattr(models, backbone)(pretrained)
     in_features = densenet.classifier.in_features
 

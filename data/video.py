@@ -48,12 +48,12 @@ class KvasirCapsuleVideo(Dataset):
       
 
     # get label
-    ret['bbox'] = None
+    ret['bbox'] = []
     if frame_number in self._frames_with_cls:
       row = self.metadata.loc[self.metadata['frame_number']==frame_number]
       ret['class'] = row['finding_class'].item()
       if not np.isnan(row['x1']).item():
-        ret['bbox'] = (row['x1'], row['y1'], row['x3'], row['y3'])
+        ret['bbox'] = [row['x1'], row['y1'], row['x3'], row['y3']]
     else:
       ret['class'] = 'Normal'
 

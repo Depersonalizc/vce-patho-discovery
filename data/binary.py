@@ -17,7 +17,7 @@ def get_weighted_sampler(labels):
     samp_weights = cls_weights[labels]
     sampler = WeightedRandomSampler(samp_weights, len(samp_weights))
     return sampler
-    
+
 
 class KvasirCapsuleBinary(Dataset):
 

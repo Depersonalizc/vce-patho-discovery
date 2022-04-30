@@ -21,3 +21,8 @@ def read_rgb_255(path):
 
 def read_gray_255(path):
     return cv2.imread(path, cv2.IMREAD_GRAYSCALE)
+
+def read_mask(path, threshold=128):
+    gray = read_gray_255(path)
+    mask = gray > threshold
+    return mask
